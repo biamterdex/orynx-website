@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orynx Robotics | Advanced Industrial Automation & Autonomous Systems</title>
+    <style>
+        :root {
+            --bg-deep-night: #16110e;  /* Deep desert shadow */
+            --bg-dune-card: #221a16;   /* Rich earth clay */
+            --terracotta: #cc6643;     /* Warm desert rock */
+            --dune-gold: #e5b869;      /* Sunlit sand */
+            --sand-white: #f5ebe6;     /* Soft desert sky */
+            --text-muted: #a6958e;     /* Dust grey */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-deep-night);
+            color: var(--sand-white);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: rgba(22, 17, 14, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(229, 184, 105, 0.1);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--dune-gold);
+            letter-spacing: 1px;
+        }
+
+        .logo span { color: var(--terracotta); }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            color: var(--sand-white);
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover { color: var(--dune-gold); }
+
+        /* Hero Section */
+        header {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0 8%;
+            background: radial-gradient(circle at 80% 20%, rgba(204, 102, 67, 0.15), transparent 45%),
+                        radial-gradient(circle at 10% 80%, rgba(229, 184, 105, 0.05), transparent 30%);
+            padding-top: 80px;
+        }
+
+        header h1 {
+            font-size: 48px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            max-width: 800px;
+        }
+
+        header h1 span {
+            color: transparent;
+            background: linear-gradient(45deg, var(--dune-gold), var(--terracotta));
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+
+        header p {
+            font-size: 18px;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 35px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            background-color: var(--terracotta);
+            color: var(--sand-white);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 4px;
+            transition: transform 0.2s, background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #b35333;
+            transform: translateY(-2px);
+        }
+
+        /* General Section Layout */
+        section {
+            padding: 100px 8%;
+        }
+
+        .section-title {
+            font-size: 32px;
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 50px;
+            height: 3px;
+            background-color: var(--dune-gold);
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 150fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--bg-dune-card);
+            padding: 40px 30px;
+            border-radius: 6px;
+            border-top: 3px solid var(--terracotta);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--dune-gold);
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 15px;
+        }
+
+        /* Maha Bot Showcase Section */
+        .showcase-container {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            background: linear-gradient(135deg, var(--bg-dune-card), rgba(34, 26, 22, 0.3));
+            padding: 40px;
+            border-radius: 8px;
+            border: 1px solid rgba(229, 184, 105, 0.1);
+            flex-wrap: wrap;
+        }
+
+        .showcase-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .showcase-text h3 {
+            font-size: 26px;
+            color: var(--dune-gold);
+            margin-bottom: 15px;
+        }
+
+        .showcase-text p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .tech-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(204, 102, 67, 0.15);
+            color: var(--terracotta);
+            padding: 5px 12px;
+            font-size: 12px;
+            font-weight: 600;
+            border-radius: 20px;
+            border: 1px solid rgba(204, 102, 67, 0.3);
+        }
+
+        /* About / Engineering Leadership */
+        .about-text {
+            max-width: 800px;
+            color: var(--text-muted);
+            font-size: 17px;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+        }
+
+        /* Contact Section */
+        .contact-info {
+            background-color: var(--bg-dune-card);
+            padding: 40px;
+            border-radius: 6px;
+            max-width: 600px;
+            border-left: 4px solid var(--dune-gold);
+        }
+
+        .contact-info p {
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .contact-info span {
+            color: var(--dune-gold);
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 14px;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(229, 184, 105, 0.05);
+        }
+
+        /* Mobile Viewport Fixes */
+        @media (max-width: 768px) {
+            nav ul { display: none; } /* Kept clean for single mobile page scroll */
+            header h1 { font-size: 34px; }
+            section { padding: 60px 5%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">ORYNX<span>.</span>ROBOTICS</div>
+        <ul>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#mahabot">Maha Bot</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Header -->
+    <header>
+        <h1>Architecting Premium <span>Industrial Automation</span> & Mobile Robotics Solutions</h1>
+        <p>Providing high-tier Fanuc system integration, rugged PLC deployment, and custom autonomous mobile fleet solutions engineered to maximize industrial throughput.</p>
+        <a href="#contact" class="btn">Initiate Project Consultation</a>
+    </header>
+
+    <!-- Services Section -->
+    <section id="services">
+        <h2 class="section-title">Core Competencies</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Industrial Manipulators</h3>
+                <p>Advanced kinematics programming and trajectory optimization specifically for Fanuc robotic ecosystems, ensuring precision payload cycles.</p>
+            </div>
+            <div class="service-card">
+                <h3>PLC Architecture</h3>
+                <p>Rock-solid automation control loops, programmatic master-slave handshakes, and factory safety system programming engineered for modern manufacturing plants.</p>
+            </div>
+            <div class="service-card">
+                <h3>Autonomous Systems</h3>
+                <p>End-to-end design and deployment of custom fleet-ready rovers running advanced RTOS firmware, embedded hardware verification, and sub-assembly validation.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Maha Bot Showcase -->
+    <section id="mahabot" style="background-color: rgba(34, 26, 22, 0.2);">
+        <h2 class="section-title">In-House R&D Projects</h2>
+        <div class="showcase-container">
+            <div class="showcase-text">
+                <h3>Maha Bot — Custom Autonomous Mobile Delivery Rover</h3>
+                <p>Designed and built entirely from the ground up, Maha Bot is our modular autonomous prototyping platform. It leverages a tightly integrated real-time micro-ROS bridge to coordinate heavy actuators alongside complex high-bandwidth sensor pipelines.</p>
+                <p>Equipped with low-latency WebRTC secure streaming architectures, it allows interactive teleoperation and data telemetry tracking from remote cellular networks globally.</p>
+                <div class="tech-tags">
+                    <span class="tag">ROS 2 Jazzy</span>
+                    <span class="tag">Raspberry Pi 5</span>
+                    <span class="tag">Teensy 4.1 RTOS</span>
+                    <span class="tag">WebRTC Streaming</span>
+                    <span class="tag">micro-ROS Middleware</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">Global Engineering Pedigree</h2>
+        <div class="about-text">
+            <p>Orynx Robotics bridges the gap between advanced edge robotics and heavy industrial automation environments. Founded by Mohamed Karim Ziadi, a mechatronics engineer with deep validation and system-level verification expertise formed inside tech hubs across Tokyo and Kanagawa, Japan[cite: 3].</p>
+            <p>Our operational framework focuses on rigorous hardware-software integration testing, empirical data-driven risk assessment, and bulletproof deployment execution[cite: 3]. We don't just write code; we design robust systems built to thrive under intense operational demands[cite: 3].</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-info">
+            <p>Partner with Orynx Robotics for your upcoming industrial integration or customized robotic fleet deployment.</p>
+            <p><span>Email:</span> contact@orynxrobotics.com</p>
+            <p><span>Location:</span> Muscat, Sultanate of Oman</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Orynx Robotics. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
