@@ -1,345 +1,496 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orynx Robotics | Advanced Industrial Automation & Autonomous Systems</title>
-    <style>
-        :root {
-            --bg-deep-night: #16110e;  /* Deep desert shadow */
-            --bg-dune-card: #221a16;   /* Rich earth clay */
-            --terracotta: #cc6643;     /* Warm desert rock */
-            --dune-gold: #e5b869;      /* Sunlit sand */
-            --sand-white: #f5ebe6;     /* Soft desert sky */
-            --text-muted: #a6958e;     /* Dust grey */
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: var(--bg-deep-night);
-            color: var(--sand-white);
-            line-height: 1.6;
-        }
-
-        /* Navigation */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 8%;
-            background: rgba(22, 17, 14, 0.95);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(229, 184, 105, 0.1);
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: var(--dune-gold);
-            letter-spacing: 1px;
-        }
-
-        .logo span { color: var(--terracotta); }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
-
-        nav a {
-            color: var(--sand-white);
-            text-decoration: none;
-            font-size: 15px;
-            transition: color 0.3s;
-        }
-
-        nav a:hover { color: var(--dune-gold); }
-
-        /* Hero Section */
-        header {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
-            padding: 0 8%;
-            background: radial-gradient(circle at 80% 20%, rgba(204, 102, 67, 0.15), transparent 45%),
-                        radial-gradient(circle at 10% 80%, rgba(229, 184, 105, 0.05), transparent 30%);
-            padding-top: 80px;
-        }
-
-        header h1 {
-            font-size: 48px;
-            line-height: 1.2;
-            margin-bottom: 20px;
-            max-width: 800px;
-        }
-
-        header h1 span {
-            color: transparent;
-            background: linear-gradient(45deg, var(--dune-gold), var(--terracotta));
-            -webkit-background-clip: text;
-            background-clip: text;
-        }
-
-        header p {
-            font-size: 18px;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin-bottom: 35px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 14px 28px;
-            background-color: var(--terracotta);
-            color: var(--sand-white);
-            text-decoration: none;
-            font-weight: 600;
-            border-radius: 4px;
-            transition: transform 0.2s, background-color 0.3s;
-        }
-
-        .btn:hover {
-            background-color: #b35333;
-            transform: translateY(-2px);
-        }
-
-        /* General Section Layout */
-        section {
-            padding: 100px 8%;
-        }
-
-        .section-title {
-            font-size: 32px;
-            margin-bottom: 50px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -10px;
-            width: 50px;
-            height: 3px;
-            background-color: var(--dune-gold);
-        }
-
-        /* Services Grid */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 150fr));
-            gap: 30px;
-        }
-
-        .service-card {
-            background-color: var(--bg-dune-card);
-            padding: 40px 30px;
-            border-radius: 6px;
-            border-top: 3px solid var(--terracotta);
-            transition: transform 0.3s;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .service-card h3 {
-            font-size: 20px;
-            margin-bottom: 15px;
-            color: var(--dune-gold);
-        }
-
-        .service-card p {
-            color: var(--text-muted);
-            font-size: 15px;
-        }
-
-        /* Maha Bot Showcase Section */
-        .showcase-container {
-            display: flex;
-            align-items: center;
-            gap: 50px;
-            background: linear-gradient(135deg, var(--bg-dune-card), rgba(34, 26, 22, 0.3));
-            padding: 40px;
-            border-radius: 8px;
-            border: 1px solid rgba(229, 184, 105, 0.1);
-            flex-wrap: wrap;
-        }
-
-        .showcase-text {
-            flex: 1;
-            min-width: 300px;
-        }
-
-        .showcase-text h3 {
-            font-size: 26px;
-            color: var(--dune-gold);
-            margin-bottom: 15px;
-        }
-
-        .showcase-text p {
-            color: var(--text-muted);
-            margin-bottom: 20px;
-        }
-
-        .tech-tags {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .tag {
-            background: rgba(204, 102, 67, 0.15);
-            color: var(--terracotta);
-            padding: 5px 12px;
-            font-size: 12px;
-            font-weight: 600;
-            border-radius: 20px;
-            border: 1px solid rgba(204, 102, 67, 0.3);
-        }
-
-        /* About / Engineering Leadership */
-        .about-text {
-            max-width: 800px;
-            color: var(--text-muted);
-            font-size: 17px;
-        }
-
-        .about-text p {
-            margin-bottom: 20px;
-        }
-
-        /* Contact Section */
-        .contact-info {
-            background-color: var(--bg-dune-card);
-            padding: 40px;
-            border-radius: 6px;
-            max-width: 600px;
-            border-left: 4px solid var(--dune-gold);
-        }
-
-        .contact-info p {
-            margin-bottom: 15px;
-            font-size: 16px;
-        }
-
-        .contact-info span {
-            color: var(--dune-gold);
-            font-weight: bold;
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 40px;
-            font-size: 14px;
-            color: var(--text-muted);
-            border-top: 1px solid rgba(229, 184, 105, 0.05);
-        }
-
-        /* Mobile Viewport Fixes */
-        @media (max-width: 768px) {
-            nav ul { display: none; } /* Kept clean for single mobile page scroll */
-            header h1 { font-size: 34px; }
-            section { padding: 60px 5%; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orynx Robotics | Physical AI &amp; Industrial Automation Oman</title>
+  <meta name="description" content="Physical AI, Embodied Intelligence, and high-availability robotics engineering in Oman. Founded on tier-1 Japanese enterprise quality standards.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- Navigation -->
-    <nav>
-        <div class="logo">ORYNX<span>.</span>ROBOTICS</div>
-        <ul>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#mahabot">Maha Bot</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-
-    <!-- Hero Header -->
-    <header>
-        <h1>Architecting Premium <span>Industrial Automation</span> & Mobile Robotics Solutions</h1>
-        <p>Providing high-tier Fanuc system integration, rugged PLC deployment, and custom autonomous mobile fleet solutions engineered to maximize industrial throughput.</p>
-        <a href="#contact" class="btn">Initiate Project Consultation</a>
-    </header>
-
-    <!-- Services Section -->
-    <section id="services">
-        <h2 class="section-title">Core Competencies</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <h3>Industrial Manipulators</h3>
-                <p>Advanced kinematics programming and trajectory optimization specifically for Fanuc robotic ecosystems, ensuring precision payload cycles.</p>
-            </div>
-            <div class="service-card">
-                <h3>PLC Architecture</h3>
-                <p>Rock-solid automation control loops, programmatic master-slave handshakes, and factory safety system programming engineered for modern manufacturing plants.</p>
-            </div>
-            <div class="service-card">
-                <h3>Autonomous Systems</h3>
-                <p>End-to-end design and deployment of custom fleet-ready rovers running advanced RTOS firmware, embedded hardware verification, and sub-assembly validation.</p>
-            </div>
+  <!-- ================= HEADER & NAVIGATION ================= -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="#" class="brand-logo" aria-label="Orynx Robotics Home">
+        <svg width="42" height="42" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="oryx-svg">
+          <path d="M 40 52 L 28 28 L 16 8" stroke="#E5A93C" stroke-width="4.5" stroke-linecap="round"/>
+          <circle cx="28" cy="28" r="3" fill="#E5A93C"/>
+          <circle cx="16" cy="8" r="2.5" fill="#E5A93C"/>
+          <path d="M 60 52 L 72 28 L 84 8" stroke="#E5A93C" stroke-width="4.5" stroke-linecap="round"/>
+          <circle cx="72" cy="28" r="3" fill="#E5A93C"/>
+          <circle cx="84" cy="8" r="2.5" fill="#E5A93C"/>
+          <polygon points="50,88 28,52 72,52" fill="#E5A93C"/>
+          <polygon points="50,78 36,56 64,56" fill="#0B0C10"/>
+          <circle cx="50" cy="65" r="4" fill="#C85A32"/>
+        </svg>
+        <div class="brand-text">
+          <span class="brand-name">ORYNX</span>
+          <span class="brand-sub">ROBOTICS</span>
         </div>
-    </section>
+      </a>
 
-    <!-- Maha Bot Showcase -->
-    <section id="mahabot" style="background-color: rgba(34, 26, 22, 0.2);">
-        <h2 class="section-title">In-House R&D Projects</h2>
-        <div class="showcase-container">
-            <div class="showcase-text">
-                <h3>Maha Bot — Custom Autonomous Mobile Delivery Rover</h3>
-                <p>Designed and built entirely from the ground up, Maha Bot is our modular autonomous prototyping platform. It leverages a tightly integrated real-time micro-ROS bridge to coordinate heavy actuators alongside complex high-bandwidth sensor pipelines.</p>
-                <p>Equipped with low-latency WebRTC secure streaming architectures, it allows interactive teleoperation and data telemetry tracking from remote cellular networks globally.</p>
-                <div class="tech-tags">
-                    <span class="tag">ROS 2 Jazzy</span>
-                    <span class="tag">Raspberry Pi 5</span>
-                    <span class="tag">Teensy 4.1 RTOS</span>
-                    <span class="tag">WebRTC Streaming</span>
-                    <span class="tag">micro-ROS Middleware</span>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle Navigation">
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+
+      <nav class="nav-menu" id="navMenu">
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#physical-ai" class="nav-link">Physical AI</a>
+        <a href="#showcase" class="nav-link">R&amp;D Showcase</a>
+        <a href="#pedigree" class="nav-link">Engineering Pedigree</a>
+        <a href="#architecture" class="nav-link">Architecture</a>
+        <a href="#consultation" class="btn-cta text-btn">Book Strategy Session</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ================= HERO SECTION ================= -->
+  <section class="hero-section">
+    <div class="hero-bg-grid"></div>
+    <div class="container hero-content">
+      <div class="status-badge">
+        <span class="pulse-dot"></span> Physical AI &amp; ROS 2 Native | CR #1642883 (Muscat)[cite: 2]
+      </div>
+      <h1 class="hero-title">
+        Physical AI &amp; Industrial Automation <span class="text-gold">Engineered in Oman</span>[cite: 2]
+      </h1>
+      <p class="hero-subtitle">
+        Infusing Japanese enterprise robotics quality assurance with modern Embodied AI &amp; Neural Control Policies[cite: 1]. Built for high-vibration manufacturing and autonomous off-grid operations.
+      </p>
+      <div class="hero-cta-group">
+        <a href="#physical-ai" class="btn-primary">Explore Physical AI</a>
+        <a href="#consultation" class="btn-secondary">Schedule Technical Call</a>
+      </div>
+      <div class="hero-metrics">
+        <div class="metric-item">
+          <span class="metric-val">Japan Tier-1</span>
+          <span class="metric-lbl">Robotics QA Pedigree[cite: 1]</span>
+        </div>
+        <div class="metric-divider"></div>
+        <div class="metric-item">
+          <span class="metric-val">Embodied AI</span>
+          <span class="metric-lbl">LeRobot &amp; Diffusion Policies[cite: 1]</span>
+        </div>
+        <div class="metric-divider"></div>
+        <div class="metric-item">
+          <span class="metric-val">CR #1642883</span>
+          <span class="metric-lbl">Muscat Governorate, Oman[cite: 2]</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SERVICES PILLARS (DUAL VIEW) ================= -->
+  <section id="services" class="section-padding services-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Core Offerings</span>
+        <h2>Engineering Dual-Focus Pillars</h2>
+        <p>Architected to deliver immediate business ROI while adhering to rigorous software and mechatronic engineering standards[cite: 1].</p>
+      </div>
+
+      <div class="services-grid">
+        
+        <!-- Pillar 1 -->
+        <div class="service-card">
+          <div class="card-header">
+            <div class="card-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E5A93C" stroke-width="2"><path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/></svg>
+            </div>
+            <h3>Industrial Automation &amp; Systems Integration</h3>
+          </div>
+          
+          <div class="dual-view-container">
+            <!-- Business View -->
+            <div class="view-pane business-pane">
+              <div class="pane-badge">Executive / Business View</div>
+              <ul>
+                <li><strong>High-Throughput Workcells:</strong> Maximized parts-per-minute (PPM) yield[cite: 1].</li>
+                <li><strong>Zero-Downtime Retrofits:</strong> Modular integration over legacy hardware lines[cite: 1].</li>
+                <li><strong>Unified SCADA/PLC:</strong> Direct shop-floor-to-cloud operations monitoring.</li>
+                <li><strong>Multi-Axis Kinematics:</strong> Heavy-payload packaging and precise assembly[cite: 1].</li>
+              </ul>
+            </div>
+
+            <!-- Technical View -->
+            <div class="view-pane tech-pane">
+              <div class="pane-badge">Technical / Architecture View</div>
+              <ul class="tech-list">
+                <li><code>Yaskawa / Realman / SO101</code> manipulator kinematic tuning[cite: 1]</li>
+                <li><code>Siemens / Allen-Bradley</code> Ladder &amp; Structured Text (ST)[cite: 1]</li>
+                <li><code>PROFINET / EtherNet/IP / MQTT</code> deterministic bus networks[cite: 1]</li>
+                <li>Safety interlocks compliant with <code>ISO 13849-1 / SIL 2</code>[cite: 1]</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pillar 2 -->
+        <div class="service-card">
+          <div class="card-header">
+            <div class="card-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C85A32" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="7" cy="12" r="2"/><circle cx="17" cy="12" r="2"/><path d="M12 12h.01"/></svg>
+            </div>
+            <h3>Autonomous Mobility &amp; Custom R&amp;D</h3>
+          </div>
+
+          <div class="dual-view-container">
+            <!-- Business View -->
+            <div class="view-pane business-pane">
+              <div class="pane-badge">Executive / Business View</div>
+              <ul>
+                <li><strong>Self-Navigating Logistics Rovers:</strong> Reduced internal material transport cost[cite: 1].</li>
+                <li><strong>Rugged Off-Grid Inspection:</strong> Autonomous monitoring in hazardous environments.</li>
+                <li><strong>Rapid Hardware Prototyping:</strong> PCB design and mechatronics in weeks[cite: 1].</li>
+                <li><strong>Remote Fleet Operations:</strong> Browser-based teleoperation without physical risk[cite: 1].</li>
+              </ul>
+            </div>
+
+            <!-- Technical View -->
+            <div class="view-pane tech-pane">
+              <div class="pane-badge">Technical / Architecture View</div>
+              <ul class="tech-list">
+                <li><code>ROS 2 (Jazzy Jalisco)</code> + Nav2 &amp; SLAM Toolbox[cite: 1]</li>
+                <li><code>micro-ROS</code> bridge on <code>Teensy 4.1</code> @ 600MHz (FreeRTOS)[cite: 1]</li>
+                <li>Low-latency <code>WebRTC</code> video/telemetry pipeline via WebSockets[cite: 1]</li>
+                <li>Persistent udev mapping via <code>/dev/v4l/by-id/</code> for camera isolation</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PHYSICAL AI & EMBODIED INTELLIGENCE ================= -->
+  <section id="physical-ai" class="section-padding physical-ai-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Next-Gen Embodied Intelligence</span>
+        <h2>Physical AI &amp; Neural Control Policies</h2>
+        <p>Moving beyond rigid, hand-coded trajectories into adaptive neural networks that learn, reason, and manipulate physical objects in complex environments[cite: 1].</p>
+      </div>
+
+      <div class="arch-cards-grid">
+        <div class="arch-card">
+          <div class="arch-number">01</div>
+          <h3>Diffusion Policies &amp; Imitation Learning</h3>
+          <p>
+            Deploying state-of-the-art <code>Hugging Face LeRobot</code> architectures[cite: 1]. Robots learn intricate physical manipulation tasks directly from human teleoperation demonstrations without manual trajectory programming[cite: 1].
+          </p>
+        </div>
+
+        <div class="arch-card">
+          <div class="arch-number">02</div>
+          <h3>Edge AI Acceleration &amp; Path Tracking</h3>
+          <p>
+            Low-latency neural network inference on embedded compute units[cite: 1]. Optimized real-time path-tracking controllers, vision-language-action (VLA) pipelines, and sensor-fusion navigation[cite: 1].
+          </p>
+        </div>
+
+        <div class="arch-card">
+          <div class="arch-number">03</div>
+          <h3>Sim-to-Real Hardware Transfer</h3>
+          <p>
+            Robust hardware-in-the-loop (HIL) testing and microcontroller bridging[cite: 1]. Bridging high-level PyTorch models down to <code>Teensy 4.1 micro-ROS</code> execution in under 20 milliseconds[cite: 1].
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FEATURED R&D SHOWCASE ================= -->
+  <section id="showcase" class="section-padding showcase-section">
+    <div class="container">
+      <div class="showcase-card">
+        <div class="showcase-info">
+          <span class="showcase-tag">Internal Flagship Platform</span>
+          <h2>Maha Bot: Autonomous Logistics Rover</h2>
+          <p class="showcase-desc">
+            Engineered specifically for harsh desert ambient temperatures and rugged facility layouts, Maha Bot combines real-time micro-ROS low-level actuation with cloud-linked WebRTC teleoperation[cite: 1].
+          </p>
+
+          <div class="specs-grid">
+            <div class="spec-card">
+              <span class="spec-label">Middleware Framework</span>
+              <span class="spec-value">ROS 2 Jazzy Jalisco[cite: 1]</span>
+            </div>
+            <div class="spec-card">
+              <span class="spec-label">Embedded MCU</span>
+              <span class="spec-value">Teensy 4.1 (micro-ROS)[cite: 1]</span>
+            </div>
+            <div class="spec-card">
+              <span class="spec-label">Control Layer</span>
+              <span class="spec-value">WebRTC + nipplejs[cite: 1]</span>
+            </div>
+            <div class="spec-card">
+              <span class="spec-label">Hardware Isolation</span>
+              <span class="spec-value">udev /dev/v4l/by-id/</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Teleoperation UI Mockup / Screenshot Frame -->
+        <div class="showcase-visual">
+          <div class="teleop-frame">
+            <div class="teleop-header">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+              <span class="frame-title">MahaBot-Teleop-Dashboard v2.4 [LIVE]</span>
+            </div>
+            
+            <div class="teleop-viewport">
+              <div class="viewport-overlay">
+                <div class="hud-top-left">
+                  <span>CAM_01: FRONT_STEREO</span>
+                  <span class="hud-stat">FPS: 60</span>
                 </div>
+                <div class="hud-top-right">
+                  <span class="hud-badge active">WebRTC Connected</span>
+                  <span class="hud-stat">Latency: 14ms</span>
+                </div>
+                
+                <div class="hud-joystick-mock">
+                  <div class="joy-outer">
+                    <div class="joy-inner"></div>
+                  </div>
+                  <span class="joy-label">nipplejs dynamic vector</span>
+                </div>
+
+                <div class="hud-bottom-bar">
+                  <code>TOPIC: /cmd_vel [linear.x: 0.8m/s, angular.z: 0.0rad/s]</code>
+                </div>
+              </div>
             </div>
+            <div class="teleop-footer">
+              <span>Hardware Isolation: Active</span>
+              <span>Baud: 921600 (micro-ROS transport)</span>
+            </div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- About Section -->
-    <section id="about">
-        <h2 class="section-title">Global Engineering Pedigree</h2>
-        <div class="about-text">
-            <p>Orynx Robotics bridges the gap between advanced edge robotics and heavy industrial automation environments. Founded by Mohamed Karim Ziadi, a mechatronics engineer with deep validation and system-level verification expertise formed inside tech hubs across Tokyo and Kanagawa, Japan[cite: 3].</p>
-            <p>Our operational framework focuses on rigorous hardware-software integration testing, empirical data-driven risk assessment, and bulletproof deployment execution[cite: 3]. We don't just write code; we design robust systems built to thrive under intense operational demands[cite: 3].</p>
+  <!-- ================= JAPANESE PEDIGREE & LEADERSHIP ================= -->
+  <section id="pedigree" class="section-padding pedigree-section">
+    <div class="container">
+      <div class="showcase-card">
+        <div class="showcase-info">
+          <span class="showcase-tag">Engineering Pedigree</span>
+          <h2>Japanese Enterprise Standards × Global AI Recognition</h2>
+          <p class="showcase-desc">
+            Orynx Robotics is founded by senior Mechatronics Engineer <strong>Mohamed Karim Ziadi</strong>[cite: 1, 2], bringing years of tier-1 Japanese enterprise robotics experience from Tokyo and Kanagawa directly to Oman's industrial sector[cite: 1, 2].
+          </p>
+
+          <div class="specs-grid">
+            <div class="spec-card">
+              <span class="spec-label">Ex-LexxPluss (Kanagawa, Japan)</span>
+              <span class="spec-value">AMR QA &amp; Battery Charger Testing[cite: 1]</span>
+            </div>
+            <div class="spec-card">
+              <span class="spec-label">Ex-TELEXISTENCE (Tokyo, Japan)</span>
+              <span class="spec-value">Teleoperation &amp; Hardware Verification[cite: 1]</span>
+            </div>
+            <div class="spec-card">
+              <span class="spec-label">Ex-Mujin Inc. (Tokyo, Japan)</span>
+              <span class="spec-value">Industrial Arm &amp; Staging Engineering[cite: 1]</span>
+            </div>
+            <div class="spec-card">
+              <span class="spec-label">Global AI Awards</span>
+              <span class="spec-value">AMD Robotics (3rd) &amp; LeRobot (21st) 2025[cite: 1]</span>
+            </div>
+          </div>
         </div>
-    </section>
 
-    <!-- Contact Section -->
-    <section id="contact">
-        <h2 class="section-title">Get In Touch</h2>
-        <div class="contact-info">
-            <p>Partner with Orynx Robotics for your upcoming industrial integration or customized robotic fleet deployment.</p>
-            <p><span>Email:</span> contact@orynxrobotics.com</p>
-            <p><span>Location:</span> Muscat, Sultanate of Oman</p>
+        <div class="pedigree-highlights">
+          <div class="view-pane tech-pane">
+            <div class="pane-badge">Rigorous Reliability Protocols</div>
+            <ul>
+              <li><strong>DFMEA &amp; Durability Verification:</strong> Built-in fault tolerance developed across Japanese autonomous vehicle lab environments[cite: 1].</li>
+              <li><strong>Comprehensive QA Test Scenarios:</strong> Subassembly &amp; whole-robot validation ensuring 99.9% uptime on factory floors[cite: 1].</li>
+              <li><strong>Custom PCB &amp; Mechatronics Prototyping:</strong> KiCad, Altium, Onshape, Fusion360, and CNC/laser machining[cite: 1].</li>
+            </ul>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 Orynx Robotics. All Rights Reserved.</p>
-    </footer>
+  <!-- ================= SYSTEM ARCHITECTURE HIGHLIGHT ================= -->
+  <section id="architecture" class="section-padding architecture-section">
+    <div class="container">
+      <div class="section-header center">
+        <span class="section-tag">Reliability Engineering</span>
+        <h2>High-Vibration Isolation &amp; Hardware Stability</h2>
+        <p>Software architectures engineered so physical shocks never compromise software execution[cite: 1].</p>
+      </div>
 
+      <div class="arch-cards-grid">
+        <div class="arch-card">
+          <div class="arch-number">01</div>
+          <h3>Deterministic Device Links</h3>
+          <p>
+            Standard dynamic Linux device indexing (<code>/dev/video0</code>) fails under high-vibration re-enumeration. We enforce persistent symlinks via <code>/dev/v4l/by-id/</code> and custom <code>udev</code> rules for failure-proof hardware bindings.
+          </p>
+        </div>
+
+        <div class="arch-card">
+          <div class="arch-number">02</div>
+          <h3>Real-Time Microcontroller Bridging</h3>
+          <p>
+            By leveraging <code>micro-ROS</code> running natively on 32-bit ARM Cortex-M7 (Teensy 4.1)[cite: 1], motor control loops run deterministically at sub-millisecond rates, isolated from high-level computer vision processing.
+          </p>
+        </div>
+
+        <div class="arch-card">
+          <div class="arch-number">03</div>
+          <h3>Low-Latency Remote Operations</h3>
+          <p>
+            Custom browser-integrated dashboard leveraging <code>nipplejs</code> for dynamic touchscreen control[cite: 1] and <code>WebRTC</code> peer-to-peer data channels for seamless operator control anywhere in Oman[cite: 1, 2].
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONSULTATION & BOOKING SECTION ================= -->
+  <section id="consultation" class="section-padding consultation-section">
+    <div class="container">
+      <div class="booking-wrapper">
+        <div class="booking-text">
+          <span class="section-tag">Direct Technical Engagement</span>
+          <h2>Schedule a Technical Discovery Call</h2>
+          <p>
+            Speak directly with our senior robotics engineers[cite: 1]. We will analyze your site requirements, evaluate payload dynamic constraints, and propose a tailored deployment roadmap[cite: 1].
+          </p>
+          <div class="booking-features">
+            <div class="b-feat">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E5A93C" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>30-Minute Architecture &amp; Feasibility Assessment</span>
+            </div>
+            <div class="b-feat">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E5A93C" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Direct access to Lead Mechatronics &amp; ROS Developers[cite: 1]</span>
+            </div>
+            <div class="b-feat">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E5A93C" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Custom Integration Cost &amp; Timeline Estimates</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Google Calendar Integration Frame -->
+        <div class="calendar-frame-container">
+          <div class="calendar-header">
+            <span>Orynx Technical Calendar</span>
+            <span class="badge-live">Live Availability</span>
+          </div>
+          
+          <div class="calendar-embed-wrapper">
+            <iframe 
+              src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Asia%2FMuscat&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=1&showCalendars=0&bgcolor=%230B0C10" 
+              style="border: 0;" 
+              width="100%" 
+              height="480" 
+              frameborder="0" 
+              scrolling="no"
+              title="Schedule Consultation with Orynx Robotics">
+            </iframe>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Floating WhatsApp Action Button -->
+  <a href="https://wa.me/96894249391?text=Hello%20Orynx%20Robotics,%20I%20would%20like%20to%20discuss%20an%20automation%20or%20robotics%20project." 
+     class="whatsapp-float" 
+     target="_blank" 
+     aria-label="Contact on WhatsApp">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="#0B0C10">
+      <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984 0 1.762.459 3.48 1.332 5.001l-1.416 5.166 5.283-1.386c1.467.8 3.12 1.222 4.788 1.223h.004c5.505 0 9.988-4.478 9.989-9.985 0-2.668-1.039-5.176-2.926-7.064-1.888-1.888-4.397-2.927-7.064-2.927zm0 1.664c4.588 0 8.324 3.737 8.325 8.325 0 2.227-.867 4.32-2.443 5.896-1.577 1.577-3.67 2.444-5.894 2.444h-.003c-1.488 0-2.946-.398-4.221-1.151l-.303-.18-3.136.822.836-3.053-.197-.314c-.827-1.318-1.264-2.846-1.264-4.41 0-4.588 3.737-8.325 8.325-8.325z"/>
+    </svg>
+  </a>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="brand-logo">
+            <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M 40 52 L 28 28 L 16 8" stroke="#E5A93C" stroke-width="5" stroke-linecap="round"/>
+              <path d="M 60 52 L 72 28 L 84 8" stroke="#E5A93C" stroke-width="5" stroke-linecap="round"/>
+              <polygon points="50,88 28,52 72,52" fill="#E5A93C"/>
+            </svg>
+            <span class="brand-name text-white">ORYNX ROBOTICS</span>
+          </div>
+          <p class="footer-tagline">
+            <strong>Mohamed Karim Ziadi Investment S.O.C</strong>[cite: 2]<br>
+            CR No: 1642883 | 100% Foreign Direct Investment Entity[cite: 2]<br>
+            Headquarters: South Al Khuwair, Bousher, Muscat Governorate, Sultanate of Oman[cite: 2]<br>
+            P.O. Box: 125, PC: 221[cite: 2]
+          </p>
+        </div>
+
+        <div class="tech-stack-badges">
+          <span class="tech-badge">Physical AI / LeRobot[cite: 1]</span>
+          <span class="tech-badge">ROS 2 Jazzy[cite: 1]</span>
+          <span class="tech-badge">Teensy / micro-ROS[cite: 1]</span>
+          <span class="tech-badge">Siemens / Yaskawa[cite: 1]</span>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Orynx Robotics (orynxrobotics.com). Registered under Ministry of Commerce, Industry &amp; Investment Promotion, Oman[cite: 2].</p>
+        <div class="footer-links">
+          <a href="tel:+96894249391">+968 94249391[cite: 2]</a>
+          <a href="mailto:mohamedkarimziadi@gmail.com">Direct Email[cite: 1, 2]</a>
+          <a href="#consultation">Book Session</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= JAVASCRIPT ================= -->
+  <script>
+    // Navigation Mobile Menu Toggle
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
+
+    navToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+      navToggle.classList.toggle('open');
+    });
+
+    // Close menu when link clicked
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        navToggle.classList.remove('open');
+      });
+    });
+
+    // Header background opacity on scroll
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        header.style.backgroundColor = 'rgba(11, 12, 16, 0.95)';
+        header.style.borderBottom = '1px solid rgba(229, 169, 60, 0.2)';
+      } else {
+        header.style.backgroundColor = 'rgba(11, 12, 16, 0.85)';
+        header.style.borderBottom = '1px solid rgba(255, 255, 255, 0.05)';
+      }
+    });
+  </script>
 </body>
 </html>
