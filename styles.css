@@ -1,29 +1,30 @@
 /* ==========================================================================
    ORYNX ROBOTICS - Official Web Platform Stylesheet
-   Theme: Dark Desert / Technical Industrial
+   Theme: Bright Desert / Light Modern Industrial
    ========================================================================== */
 
 :root {
-  /* Color Palette */
-  --bg-dark: #0B0C10;
-  --bg-card: #14161D;
-  --bg-card-hover: #1C1F2B;
-  --border-color: #262A36;
+  /* Color Palette - Bright Desert Light Theme */
+  --bg-dark: #FAF7F2;          /* Warm Desert Sand Off-White */
+  --bg-card: #FFFFFF;          /* Pure Crisp White Cards */
+  --bg-card-hover: #F3ECE2;    /* Warm Tinted Hover State */
+  --border-color: #E6DFD3;     /* Subtle Sand Border */
   
-  /* Primary Accent: Terracotta */
-  --terracotta: #C85A32;
-  --terracotta-hover: #D96B43;
+  /* Primary Accent: Rich Terracotta */
+  --terracotta: #B84A22;
+  --terracotta-hover: #A03A15;
   
-  /* Secondary Accent: Gold / Amber */
-  --gold: #E5A93C;
-  --gold-hover: #F0BC5E;
-  --gold-dim: rgba(229, 169, 60, 0.15);
+  /* Secondary Accent: Omani Amber Gold */
+  --gold: #C28E2B;
+  --gold-hover: #A6751E;
+  --gold-dim: rgba(194, 142, 43, 0.12);
   
   /* Typography Colors */
-  --text-primary: #E0E0E0;
-  --text-secondary: #9E9E9E;
-  --text-muted: #6C727F;
-  --text-white: #FFFFFF;
+  --text-primary: #1C1E24;     /* Dark Slate/Charcoal for crisp reading */
+  --text-secondary: #5C5850;   /* Muted Charcoal */
+  --text-muted: #8C857B;       /* Secondary Muted */
+  --text-white: #1C1E24;       /* Main text on light backgrounds */
+  --text-on-accent: #FFFFFF;   /* Crisp white text for terracotta/dark buttons */
   
   /* Fonts */
   --font-main: 'Inter', system-ui, -apple-system, sans-serif;
@@ -76,12 +77,12 @@ ul {
 }
 
 .text-gold { color: var(--gold); }
-.text-white { color: var(--text-white); }
+.text-white { color: var(--text-primary); }
 
 /* Buttons */
 .btn-primary {
   background-color: var(--terracotta);
-  color: var(--text-white);
+  color: var(--text-on-accent);
   padding: 0.85rem 1.75rem;
   border-radius: 4px;
   font-weight: 600;
@@ -94,30 +95,29 @@ ul {
 .btn-primary:hover {
   background-color: var(--terracotta-hover);
   border-color: var(--terracotta-hover);
-  box-shadow: 0 4px 20px rgba(200, 90, 50, 0.35);
+  box-shadow: 0 4px 20px rgba(184, 74, 34, 0.25);
 }
 
 .btn-secondary {
   background-color: transparent;
-  color: var(--gold);
+  color: var(--terracotta);
   padding: 0.85rem 1.75rem;
   border-radius: 4px;
   font-weight: 600;
   font-size: 0.95rem;
-  border: 1px solid var(--gold);
+  border: 1px solid var(--terracotta);
   transition: var(--transition);
   display: inline-block;
 }
 
 .btn-secondary:hover {
-  background-color: var(--gold-dim);
-  color: var(--gold-hover);
-  box-shadow: 0 4px 20px rgba(229, 169, 60, 0.2);
+  background-color: rgba(184, 74, 34, 0.08);
+  color: var(--terracotta-hover);
 }
 
 .btn-cta {
   background: linear-gradient(135deg, var(--gold) 0%, var(--terracotta) 100%);
-  color: #000;
+  color: #FFFFFF;
   font-weight: 700;
   padding: 0.65rem 1.35rem;
   border-radius: 4px;
@@ -125,7 +125,7 @@ ul {
 }
 
 .btn-cta:hover {
-  opacity: 0.9;
+  opacity: 0.92;
   transform: translateY(-1px);
 }
 
@@ -139,18 +139,19 @@ ul {
 }
 
 .section-tag {
-  color: var(--gold);
+  color: var(--terracotta);
   font-family: var(--font-mono);
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 2px;
   display: block;
   margin-bottom: 0.5rem;
+  font-weight: 600;
 }
 
 .section-header h2 {
   font-size: 2.25rem;
-  color: var(--text-white);
+  color: var(--text-primary);
   font-weight: 700;
   margin-bottom: 0.75rem;
 }
@@ -172,9 +173,9 @@ ul {
   left: 0;
   width: 100%;
   z-index: 1000;
-  background-color: rgba(11, 12, 16, 0.85);
+  background-color: rgba(250, 247, 242, 0.85);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   transition: var(--transition);
 }
 
@@ -203,16 +204,17 @@ ul {
   font-weight: 800;
   font-size: 1.25rem;
   letter-spacing: 2px;
-  color: var(--text-white);
+  color: var(--text-primary);
   line-height: 1;
 }
 
 .brand-sub {
   font-size: 0.65rem;
   letter-spacing: 3px;
-  color: var(--gold);
+  color: var(--terracotta);
   font-family: var(--font-mono);
   margin-top: 2px;
+  font-weight: 700;
 }
 
 .nav-menu {
@@ -224,12 +226,12 @@ ul {
 .nav-link {
   color: var(--text-primary);
   font-size: 0.95rem;
-  font-weight: 500;
+  font-weight: 600;
   transition: var(--transition);
 }
 
 .nav-link:hover {
-  color: var(--gold);
+  color: var(--terracotta);
 }
 
 .nav-toggle {
@@ -254,6 +256,7 @@ ul {
   padding: 11rem 0 6rem 0;
   overflow: hidden;
   border-bottom: 1px solid var(--border-color);
+  background-color: #FAF7F2;
 }
 
 .hero-bg-grid {
@@ -263,10 +266,10 @@ ul {
   width: 100%;
   height: 100%;
   background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(to right, rgba(184, 74, 34, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(184, 74, 34, 0.05) 1px, transparent 1px);
   background-size: 50px 50px;
-  mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
+  mask-image: radial-gradient(circle at center, black 50%, transparent 85%);
   z-index: 1;
 }
 
@@ -280,13 +283,14 @@ ul {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background-color: rgba(229, 169, 60, 0.08);
-  border: 1px solid rgba(229, 169, 60, 0.3);
+  background-color: rgba(194, 142, 43, 0.12);
+  border: 1px solid rgba(194, 142, 43, 0.35);
   padding: 0.4rem 0.9rem;
   border-radius: 20px;
   font-family: var(--font-mono);
   font-size: 0.8rem;
-  color: var(--gold);
+  color: #8C6112;
+  font-weight: 600;
   margin-bottom: 1.5rem;
 }
 
@@ -309,7 +313,7 @@ ul {
   font-size: 3.25rem;
   line-height: 1.15;
   font-weight: 800;
-  color: var(--text-white);
+  color: var(--text-primary);
   margin-bottom: 1.25rem;
   letter-spacing: -0.5px;
 }
@@ -332,7 +336,7 @@ ul {
   align-items: center;
   gap: 2.5rem;
   padding-top: 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid var(--border-color);
 }
 
 .metric-item {
@@ -344,7 +348,7 @@ ul {
   font-family: var(--font-mono);
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--text-white);
+  color: var(--text-primary);
 }
 
 .metric-lbl {
@@ -352,6 +356,7 @@ ul {
   color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 1px;
+  font-weight: 600;
 }
 
 .metric-divider {
@@ -372,11 +377,13 @@ ul {
   border: 1px solid var(--border-color);
   border-radius: 8px;
   padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
   transition: var(--transition);
 }
 
 .service-card:hover {
-  border-color: rgba(229, 169, 60, 0.4);
+  border-color: rgba(194, 142, 43, 0.4);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
 }
 
 .card-header {
@@ -387,7 +394,7 @@ ul {
 }
 
 .card-icon {
-  background-color: rgba(255, 255, 255, 0.03);
+  background-color: #FAF7F2;
   border: 1px solid var(--border-color);
   padding: 0.6rem;
   border-radius: 6px;
@@ -398,7 +405,7 @@ ul {
 
 .card-header h3 {
   font-size: 1.35rem;
-  color: var(--text-white);
+  color: var(--text-primary);
 }
 
 .dual-view-container {
@@ -414,12 +421,12 @@ ul {
 }
 
 .business-pane {
-  background-color: rgba(255, 255, 255, 0.02);
+  background-color: #FAF7F2;
   border-left: 3px solid var(--gold);
 }
 
 .tech-pane {
-  background-color: rgba(11, 12, 16, 0.6);
+  background-color: #F5EFE6;
   border-left: 3px solid var(--terracotta);
 }
 
@@ -429,10 +436,10 @@ ul {
   text-transform: uppercase;
   letter-spacing: 1.5px;
   margin-bottom: 0.75rem;
-  color: var(--text-muted);
+  font-weight: 700;
 }
 
-.business-pane .pane-badge { color: var(--gold); }
+.business-pane .pane-badge { color: #A6751E; }
 .tech-pane .pane-badge { color: var(--terracotta); }
 
 .view-pane ul {
@@ -448,22 +455,23 @@ ul {
 
 .tech-list code {
   font-family: var(--font-mono);
-  color: var(--gold);
-  background: rgba(229, 169, 60, 0.1);
+  color: var(--terracotta);
+  background: rgba(184, 74, 34, 0.08);
   padding: 2px 5px;
   border-radius: 3px;
   font-size: 0.82rem;
+  font-weight: 600;
 }
 
 /* ================= PHYSICAL AI SECTION ================= */
 .physical-ai-section {
-  background: linear-gradient(180deg, #0B0C10 0%, #11141C 100%);
+  background-color: #F4EFE6;
   border-top: 1px solid var(--border-color);
 }
 
 /* ================= R&D SHOWCASE & PEDIGREE ================= */
 .showcase-card {
-  background: linear-gradient(180deg, var(--bg-card) 0%, #0F1117 100%);
+  background-color: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: 12px;
   padding: 3rem;
@@ -471,6 +479,7 @@ ul {
   grid-template-columns: 1fr 1fr;
   gap: 3rem;
   align-items: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.03);
 }
 
 .showcase-tag {
@@ -479,11 +488,12 @@ ul {
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 1.5px;
+  font-weight: 700;
 }
 
 .showcase-info h2 {
   font-size: 2rem;
-  color: var(--text-white);
+  color: var(--text-primary);
   margin: 0.5rem 0 1rem 0;
 }
 
@@ -500,7 +510,7 @@ ul {
 }
 
 .spec-card {
-  background-color: rgba(255, 255, 255, 0.02);
+  background-color: #FAF7F2;
   border: 1px solid var(--border-color);
   padding: 0.85rem;
   border-radius: 6px;
@@ -510,18 +520,19 @@ ul {
   display: block;
   font-size: 0.75rem;
   color: var(--text-muted);
+  font-weight: 600;
 }
 
 .spec-value {
   font-family: var(--font-mono);
   font-size: 0.85rem;
-  color: var(--gold);
-  font-weight: 500;
+  color: var(--terracotta);
+  font-weight: 700;
 }
 
 .pedigree-highlights .tech-pane {
   border-left: 3px solid var(--gold);
-  background-color: rgba(229, 169, 60, 0.05);
+  background-color: #FAF7F2;
   padding: 1.5rem;
 }
 
@@ -531,22 +542,22 @@ ul {
   margin-bottom: 0.8rem;
 }
 
-/* Visual Dashboard / Mock UI */
+/* Visual Dashboard / Mock UI (High Tech Dashboard kept in sleek dark frame for contrast) */
 .teleop-frame {
-  background-color: #07080B;
-  border: 1px solid var(--border-color);
+  background-color: #0D0E12;
+  border: 1px solid #282C38;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
 }
 
 .teleop-header {
-  background-color: #12141A;
+  background-color: #161821;
   padding: 0.6rem 1rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid #282C38;
 }
 
 .dot { width: 10px; height: 10px; border-radius: 50%; }
@@ -557,13 +568,13 @@ ul {
 .frame-title {
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  color: var(--text-muted);
+  color: #8C92A4;
   margin-left: auto;
 }
 
 .teleop-viewport {
   height: 280px;
-  background: radial-gradient(circle, rgba(200,90,50,0.1) 0%, rgba(11,12,16,0.95) 100%);
+  background: radial-gradient(circle, rgba(184,74,34,0.15) 0%, rgba(13,14,18,0.95) 100%);
   position: relative;
   padding: 1rem;
 }
@@ -578,7 +589,7 @@ ul {
 .hud-top-left, .hud-top-right {
   font-family: var(--font-mono);
   font-size: 0.7rem;
-  color: var(--text-secondary);
+  color: #B0B7C6;
 }
 
 .hud-stat {
@@ -621,7 +632,7 @@ ul {
 .joy-label {
   font-family: var(--font-mono);
   font-size: 0.65rem;
-  color: var(--text-muted);
+  color: #8C92A4;
   margin-top: 4px;
   display: block;
 }
@@ -633,14 +644,14 @@ ul {
 }
 
 .teleop-footer {
-  background-color: #12141A;
+  background-color: #161821;
   padding: 0.5rem 1rem;
   font-family: var(--font-mono);
   font-size: 0.65rem;
-  color: var(--text-muted);
+  color: #8C92A4;
   display: flex;
   justify-content: space-between;
-  border-top: 1px solid var(--border-color);
+  border-top: 1px solid #282C38;
 }
 
 /* ================= ARCHITECTURE HIGHLIGHT ================= */
@@ -656,19 +667,20 @@ ul {
   padding: 2rem;
   border-radius: 8px;
   position: relative;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.02);
 }
 
 .arch-number {
   font-family: var(--font-mono);
   font-size: 2rem;
   font-weight: 700;
-  color: rgba(229, 169, 60, 0.2);
+  color: rgba(184, 74, 34, 0.25);
   margin-bottom: 0.5rem;
 }
 
 .arch-card h3 {
   font-size: 1.2rem;
-  color: var(--text-white);
+  color: var(--text-primary);
   margin-bottom: 0.75rem;
 }
 
@@ -679,13 +691,14 @@ ul {
 
 .arch-card code {
   font-family: var(--font-mono);
-  color: var(--gold);
+  color: var(--terracotta);
   font-size: 0.8rem;
+  font-weight: 600;
 }
 
 /* ================= CONSULTATION & BOOKING ================= */
 .consultation-section {
-  background: linear-gradient(180deg, var(--bg-dark) 0%, #11131A 100%);
+  background-color: #FAF7F2;
   border-top: 1px solid var(--border-color);
 }
 
@@ -698,7 +711,7 @@ ul {
 
 .booking-text h2 {
   font-size: 2.25rem;
-  color: var(--text-white);
+  color: var(--text-primary);
   margin: 0.5rem 0 1rem 0;
 }
 
@@ -720,6 +733,7 @@ ul {
   gap: 0.75rem;
   font-size: 0.95rem;
   color: var(--text-primary);
+  font-weight: 500;
 }
 
 .calendar-frame-container {
@@ -727,11 +741,11 @@ ul {
   border: 1px solid var(--border-color);
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
 
 .calendar-header {
-  background-color: #1A1D27;
+  background-color: #F3ECE2;
   padding: 1rem 1.25rem;
   display: flex;
   justify-content: space-between;
@@ -739,21 +753,23 @@ ul {
   border-bottom: 1px solid var(--border-color);
   font-weight: 600;
   font-size: 0.9rem;
+  color: var(--text-primary);
 }
 
 .badge-live {
   background-color: rgba(39, 201, 63, 0.15);
-  color: #27C93F;
+  color: #1E822A;
   border: 1px solid rgba(39, 201, 63, 0.3);
   font-size: 0.7rem;
   padding: 2px 8px;
   border-radius: 12px;
   font-family: var(--font-mono);
+  font-weight: 700;
 }
 
 .calendar-embed-wrapper {
   padding: 0.5rem;
-  background-color: #0B0C10;
+  background-color: #FAF7F2;
 }
 
 /* WhatsApp Floating Action Button */
@@ -761,27 +777,28 @@ ul {
   position: fixed;
   bottom: 2rem;
   right: 2rem;
-  background-color: var(--gold);
-  border: 1px solid var(--border-color);
+  background-color: var(--terracotta);
+  border: 1px solid var(--terracotta);
   width: 52px;
   height: 52px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 10px 25px rgba(229, 169, 60, 0.4);
+  box-shadow: 0 10px 25px rgba(184, 74, 34, 0.35);
   z-index: 999;
   transition: var(--transition);
 }
 
 .whatsapp-float:hover {
   transform: scale(1.1);
-  background-color: var(--gold-hover);
+  background-color: var(--terracotta-hover);
 }
 
 /* ================= FOOTER ================= */
 .footer {
-  background-color: #07080B;
+  background-color: #EEFAF0;
+  background: #F3ECE2;
   border-top: 1px solid var(--border-color);
   padding: 4rem 0 2rem 0;
 }
@@ -800,7 +817,7 @@ ul {
 }
 
 .footer-tagline {
-  color: var(--text-muted);
+  color: var(--text-secondary);
   font-size: 0.85rem;
   max-width: 450px;
   line-height: 1.5;
@@ -813,23 +830,24 @@ ul {
 }
 
 .tech-badge {
-  background-color: rgba(255, 255, 255, 0.03);
+  background-color: #FAF7F2;
   border: 1px solid var(--border-color);
   color: var(--text-secondary);
   font-family: var(--font-mono);
   font-size: 0.75rem;
   padding: 0.35rem 0.75rem;
   border-radius: 4px;
+  font-weight: 600;
 }
 
 .footer-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid var(--border-color);
   padding-top: 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 0.85rem;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   flex-wrap: wrap;
   gap: 1rem;
 }
@@ -837,10 +855,11 @@ ul {
 .footer-links {
   display: flex;
   gap: 1.5rem;
+  font-weight: 600;
 }
 
 .footer-links a:hover {
-  color: var(--gold);
+  color: var(--terracotta);
 }
 
 /* ================= RESPONSIVE DESIGN ================= */
@@ -864,7 +883,7 @@ ul {
     top: 80px;
     left: 0;
     width: 100%;
-    background-color: var(--bg-dark);
+    background-color: #FAF7F2;
     flex-direction: column;
     padding: 2rem;
     gap: 1.5rem;
