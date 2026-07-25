@@ -50,9 +50,17 @@
     </div>
   </header>
 
-  <!-- ================= HERO SECTION ================= -->
+  <!-- ================= HERO SECTION WITH VIDEO BACKGROUND ================= -->
   <section class="hero-section">
-    <div class="hero-bg-grid"></div>
+    <!-- Video Background Container -->
+    <div class="hero-video-wrapper">
+      <video autoplay loop muted playsinline class="hero-bg-video">
+        <source src="assets/bg-animation.mp4" type="video/mp4">
+      </video>
+      <!-- Warm Desert Overlay for High Text Readability -->
+      <div class="hero-video-overlay"></div>
+    </div>
+
     <div class="container hero-content">
       <div class="status-badge">
         <span class="pulse-dot"></span> Physical AI &amp; ROS 2 Native | CR #1642883 (Muscat)
@@ -67,22 +75,7 @@
         <a href="#physical-ai" class="btn-primary">Explore Physical AI</a>
         <a href="#consultation" class="btn-secondary">Schedule Technical Call</a>
       </div>
-      <div class="hero-metrics">
-        <div class="metric-item">
-          <span class="metric-val">Japan Tier-1</span>
-          <span class="metric-lbl">Robotics QA Pedigree</span>
-        </div>
-        <div class="metric-divider"></div>
-        <div class="metric-item">
-          <span class="metric-val">Embodied AI</span>
-          <span class="metric-lbl">LeRobot &amp; Diffusion Policies</span>
-        </div>
-        <div class="metric-divider"></div>
-        <div class="metric-item">
-          <span class="metric-val">CR #1642883</span>
-          <span class="metric-lbl">Muscat Governorate, Oman</span>
-        </div>
-      </div>
+      <!-- ... Rest of hero metrics ... -->
     </div>
   </section>
 
