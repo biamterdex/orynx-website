@@ -961,3 +961,19 @@ ul {
   z-index: 2;
   max-width: 900px;
 }
+
+/* Navbar & Footer Logo Sizing */
+.nav-logo-img {
+  height: 42px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.footer-logo-img {
+  height: 36px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+  margin-bottom: 0.75rem;
+}
