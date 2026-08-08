@@ -229,18 +229,9 @@
     </div>
   </section>
 
-  <!-- ================= FEATURED R&D SHOWCASE (WITH SECTION VIDEO BACKGROUND) ================= -->
+  <!-- ================= FEATURED R&D SHOWCASE ================= -->
   <section id="showcase" class="section-padding showcase-section">
-    <!-- Section Video Background -->
-    <div class="showcase-video-wrapper">
-      <video autoplay loop muted playsinline class="showcase-bg-video">
-        <source src="assets/mahabot-demo.mp4" type="video/mp4">
-      </video>
-      <!-- Warm Desert Overlay for High Text Readability -->
-      <div class="showcase-video-overlay"></div>
-    </div>
-
-    <div class="container relative-z">
+    <div class="container">
       <div class="showcase-card">
         <div class="showcase-info">
           <span class="showcase-tag">Internal Flagship Platform</span>
@@ -269,17 +260,23 @@
           </div>
         </div>
 
-        <!-- Teleoperation UI Mockup Frame -->
+        <!-- Teleoperation UI Frame with Live Video Stream -->
         <div class="showcase-visual">
           <div class="teleop-frame">
             <div class="teleop-header">
               <span class="dot red"></span>
               <span class="dot yellow"></span>
               <span class="dot green"></span>
-              <span class="frame-title">MahaBot-Teleop-Dashboard v2.4 [LIVE]</span>
+              <span class="frame-title">MahaBot-Live-Feed :: CAM_01 [STEREO]</span>
             </div>
             
             <div class="teleop-viewport">
+              <!-- Live Video Feed from Maha Bot -->
+              <video autoplay loop muted playsinline class="teleop-video">
+                <source src="assets/mahabot-demo.mp4" type="video/mp4">
+              </video>
+
+              <!-- HUD Dashboard Overlay Floating Over Video -->
               <div class="viewport-overlay">
                 <div class="hud-top-left">
                   <span>CAM_01: FRONT_STEREO</span>
@@ -302,6 +299,7 @@
                 </div>
               </div>
             </div>
+
             <div class="teleop-footer">
               <span>Hardware Isolation: Active</span>
               <span>Baud: 921600 (micro-ROS transport)</span>

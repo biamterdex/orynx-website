@@ -977,42 +977,32 @@ ul {
   object-fit: contain;
   margin-bottom: 0.75rem;
 }
-/* ================= SHOWCASE SECTION VIDEO BACKGROUND ================= */
-.showcase-section {
+/* ================= MAHA BOT TELEOP VIDEO ================= */
+.teleop-viewport {
   position: relative;
+  height: 320px;            /* Height for video frame */
+  background-color: #0D0E12;
   overflow: hidden;
-  border-top: 1px solid var(--border-color);
-  border-bottom: 1px solid var(--border-color);
-  background-color: #FAF7F2; /* Fallback background */
 }
 
-.showcase-video-wrapper {
+.teleop-video {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  object-fit: cover;        /* Fits video neatly inside dashboard frame */
   z-index: 1;
 }
 
-.showcase-bg-video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* Warm Sand Tint Overlay keeps content readable */
-.showcase-video-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(250, 247, 242, 0.82); 
-}
-
-/* Bring card and text content above video layer */
-.relative-z {
+.viewport-overlay {
   position: relative;
-  z-index: 2;
+  z-index: 2;               /* Keeps HUD text & joystick above the video */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+  /* Dark gradient vignette ensures white HUD text is easily readable on light video backgrounds */
+  background: linear-gradient(180deg, rgba(13,14,18,0.65) 0%, rgba(13,14,18,0.2) 50%, rgba(13,14,18,0.85) 100%);
 }
