@@ -260,17 +260,23 @@
           </div>
         </div>
 
-        <!-- Teleoperation UI Mockup Frame (Kept Dark for High-Tech Dashboard Aesthetic) -->
+        <!-- Teleoperation UI Frame with Live Video Stream -->
         <div class="showcase-visual">
           <div class="teleop-frame">
             <div class="teleop-header">
               <span class="dot red"></span>
               <span class="dot yellow"></span>
               <span class="dot green"></span>
-              <span class="frame-title">MahaBot-Teleop-Dashboard v2.4 [LIVE]</span>
+              <span class="frame-title">MahaBot-Live-Feed :: CAM_01 [STEREO]</span>
             </div>
             
             <div class="teleop-viewport">
+              <!-- Live Video Feed from Maha Bot -->
+              <video autoplay loop muted playsinline class="teleop-video">
+                <source src="assets/mahabot-demo.mp4" type="video/mp4">
+              </video>
+
+              <!-- HUD Dashboard Overlay Floating Over Video -->
               <div class="viewport-overlay">
                 <div class="hud-top-left">
                   <span>CAM_01: FRONT_STEREO</span>
@@ -285,7 +291,7 @@
                   <div class="joy-outer">
                     <div class="joy-inner"></div>
                   </div>
-                  <span class="joy-label">Realtime Control</span>
+                  <span class="joy-label">nipplejs dynamic vector</span>
                 </div>
 
                 <div class="hud-bottom-bar">
@@ -293,6 +299,7 @@
                 </div>
               </div>
             </div>
+
             <div class="teleop-footer">
               <span>Hardware Isolation: Active</span>
               <span>Baud: 921600 (micro-ROS transport)</span>

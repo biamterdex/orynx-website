@@ -977,3 +977,32 @@ ul {
   object-fit: contain;
   margin-bottom: 0.75rem;
 }
+/* ================= MAHA BOT TELEOP VIDEO ================= */
+.teleop-viewport {
+  position: relative;
+  height: 320px;            /* Height for video frame */
+  background-color: #0D0E12;
+  overflow: hidden;
+}
+
+.teleop-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;        /* Fits video neatly inside dashboard frame */
+  z-index: 1;
+}
+
+.viewport-overlay {
+  position: relative;
+  z-index: 2;               /* Keeps HUD text & joystick above the video */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+  /* Dark gradient vignette ensures white HUD text is easily readable on light video backgrounds */
+  background: linear-gradient(180deg, rgba(13,14,18,0.65) 0%, rgba(13,14,18,0.2) 50%, rgba(13,14,18,0.85) 100%);
+}
